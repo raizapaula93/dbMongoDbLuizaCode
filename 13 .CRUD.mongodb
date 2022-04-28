@@ -230,12 +230,13 @@
   db.wishlists.aggregate(
     [
       { //filter
-        $match:{'id_products': 101}
+        $match:{'id_products': 101}//filtra o produto 101
       },
       {
-        $group: {'_id':
+        $group: {'_id'://passo 2 pipeline
           {
-            'client_id': '$client_id'          
+            //'wish_id': '$_id'
+            'client_id': '$client_id'                   
           }
         },
       },
@@ -246,11 +247,11 @@
   );
 
 
-  use('luiza_code');
+  use('luiza_code');//numero de documentos dessa coleção
   db.products.count();
 
   use('luiza_code');
-  db.wishlists.distinct('client_id');
+  db.wishlists.distinct('client_id');//numero de clientes com wishlist
 
 
 
